@@ -7,6 +7,7 @@ module.exports = {
                 root: ['.'],
                 alias: {
                     '@screen': './src/screens',
+                    '@navigation': './src/navigations',
                     '@hook': './src/hooks',
                     '@reducers': './src/reducers',
                     '@reducer': './src/reducers',

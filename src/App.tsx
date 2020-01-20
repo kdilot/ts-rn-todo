@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import MainScreen from './screens/MainScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import store from '@store';
+import { TabNavigation } from '@navigation';
 
 export default class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
                 <SafeAreaProvider>
-                    <MainScreen />
+                    <TabNavigation />
                 </SafeAreaProvider>
             </Provider>
         );

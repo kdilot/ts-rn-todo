@@ -10,11 +10,12 @@
         "baseUrl": ".",
         "paths": {
             "@screen": ["src/screens"],
+            "@navigation": ["src/navigations"],
             "@hook/*": ["src/hooks/*"],
             "@reducers": ["src/reducers"],
             "@reducer/*": ["src/reducers/*"],
             "@store": ["src/store"]
-        }
+        },
     },
     "include": ["src/**/*"]
 }
