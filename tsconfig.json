@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "es6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "dist",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "baseUrl": ".",
+        "paths": {
+            "@screen": ["src/screens"],
+            "@hook/*": ["src/hooks/*"],
+            "@reducers": ["src/reducers"],
+            "@reducer/*": ["src/reducers/*"],
+            "@store": ["src/store"]
+        }
+    },
+    "include": ["src/**/*"]
+}
