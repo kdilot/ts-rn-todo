@@ -1,27 +1,27 @@
 import * as React from 'react';
 import { View, Text, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import S from './styles';
-import { useTodoState, useAddTodo, useStatusTodo, useRemoveTodo } from '@hook/useTodo';
+import { useTodo } from '@hook/useTodo';
+import { useReducerState } from '@hook/useReducerState';
 
 const MainScreen = () => {
-    const todoList = useTodoState().todo;
-    const addTodo = useAddTodo();
-    const statusTodo = useStatusTodo();
-    const removeTodo = useRemoveTodo();
+    const { useTodoState } = useReducerState();
+    const { todo } = useTodoState;
+    const { useAddTodo, useStatusTodo, useRemoveTodo } = useTodo();
     const [inputValue, setInputValue] = React.useState<string>(null);
 
     const onAdd = (value: string) => {
-        addTodo({ title: value, isDone: false });
+        useAddTodo({ title: value, isDone: false });
         setInputValue(null);
     };
 
     const onStatus = (item: object) => {
         const { title, isDone }: any = item;
-        statusTodo({ title, isDone: !isDone });
+        useStatusTodo({ title, isDone: !isDone });
     };
 
     const onRemove = (index: number) => {
-        removeTodo(index);
+        useRemoveTodo(index);
     };
 
     return (
@@ -37,7 +37,7 @@ const MainScreen = () => {
             </View>
             <View style={S.ContentView}>
                 <FlatList
-                    data={todoList}
+                    data={todo}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item, index }: any) => (
                         <View style={S.ListView}>

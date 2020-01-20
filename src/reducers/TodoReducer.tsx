@@ -42,7 +42,7 @@ const SettingReducer = createReducer<TodoState, TodoAction>(initialState, {
             draft.todo = state.todo.concat(action.payload);
         }),
     [CHANGE_STATUS]: (state, action: any) =>
-        produce(state, (draft: any) => {
+        produce(state, draft => {
             const { title, isDone } = action.payload;
             const index = state.todo.findIndex(i => i.title === title);
             draft.todo[index].isDone = isDone;

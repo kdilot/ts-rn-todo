@@ -3,23 +3,17 @@ import { RootState } from '@reducers';
 import { addTodo, statusTodo, removeTodo } from '@reducer/TodoReducer';
 import { useCallback } from 'react';
 
-export const useAddTodo = () => {
+export const useTodo = () => {
     const dispatch = useDispatch();
-    return useCallback(value => dispatch(addTodo(value)), [dispatch]);
-};
+    const useAddTodo = useCallback((value: object) => dispatch(addTodo(value)), [dispatch]);
+    const useStatusTodo = useCallback((value: object) => dispatch(statusTodo(value)), [dispatch]);
+    const useRemoveTodo = useCallback((index: number) => dispatch(removeTodo(index)), [dispatch]);
 
-export const useStatusTodo = () => {
-    const dispatch = useDispatch();
-    return useCallback(value => dispatch(statusTodo(value)), [dispatch]);
-};
-
-export const useRemoveTodo = () => {
-    const dispatch = useDispatch();
-    return useCallback(index => dispatch(removeTodo(index)), [dispatch]);
+    return { useAddTodo, useStatusTodo, useRemoveTodo };
 };
 
 export const useTodoState = () => {
     return useSelector((state: RootState) => state.TodoReducer);
 };
 
-export default { useAddTodo, useTodoState, useRemoveTodo };
+export default { useTodo, useTodoState };
