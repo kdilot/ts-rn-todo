@@ -5,6 +5,8 @@ import { useReducerState } from '@hook/useReducerState';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContext } from 'react-navigation';
 import AsyncStorage from '@react-native-community/async-storage';
+import Icons from '@asset/fonts/selection.json';
+import MyIcon from 'react-native-custom-icon';
 import S from './styles';
 
 const MainScreen = () => {
@@ -42,6 +44,7 @@ const MainScreen = () => {
         <SafeAreaView style={S.ContainerView}>
             <View style={S.HeaderView}>
                 <Text style={S.HeaderText}>TODO</Text>
+                <MyIcon name="sample2" size={40} config={Icons} />
             </View>
             <View style={S.InputView}>
                 <TextInput style={S.InputBox} value={inputValue} onChangeText={inputValue => setInputValue(inputValue)} />
