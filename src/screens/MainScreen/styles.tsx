@@ -8,8 +8,10 @@ export default StyleSheet.create({
     },
     HeaderView: {
         flex: 1,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        borderBottomWidth: 3,
     },
     InputView: {
         flex: 1,
@@ -35,11 +37,9 @@ export default StyleSheet.create({
     HeaderText: {
         fontSize: 50,
         fontWeight: 'bold',
-        paddingBottom: 10,
-        borderBottomWidth: 5,
     },
     ContentView: {
-        flex: 4,
+        flex: 6,
         padding: 10,
         width: '100%',
     },
