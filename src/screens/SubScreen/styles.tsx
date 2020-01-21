@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     ContainerView: {
         flex: 1,
-        padding: 10,
+        margin: 10,
         justifyContent: 'center',
     },
     ListText: {

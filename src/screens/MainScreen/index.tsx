@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, FlatList } from 'react-native'
 import S from './styles';
 import { useTodo } from '@hook/useTodo';
 import { useReducerState } from '@hook/useReducerState';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const MainScreen = () => {
     const { useTodoState } = useReducerState();
@@ -25,7 +26,7 @@ const MainScreen = () => {
     };
 
     return (
-        <View style={S.ContainerView}>
+        <SafeAreaView style={S.ContainerView}>
             <View style={S.HeaderView}>
                 <Text style={S.HeaderText}>TODO</Text>
             </View>
@@ -51,7 +52,7 @@ const MainScreen = () => {
                     )}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 
