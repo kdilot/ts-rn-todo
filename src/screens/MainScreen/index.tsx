@@ -1,15 +1,28 @@
 import * as React from 'react';
 import { View, Text, TextInput, TouchableOpacity, FlatList } from 'react-native';
-import S from './styles';
 import { useTodo } from '@hook/useTodo';
 import { useReducerState } from '@hook/useReducerState';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { NavigationContext } from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage';
+import S from './styles';
 
 const MainScreen = () => {
     const { useTodoState } = useReducerState();
     const { todo } = useTodoState;
     const { useAddTodo, useStatusTodo, useRemoveTodo } = useTodo();
     const [inputValue, setInputValue] = React.useState<string>(null);
+    const navigation = React.useContext(NavigationContext);
+
+    React.useEffect(() => {
+        const willBlurListener = navigation.addListener('willBlur', () => {
+            AsyncStorage.setItem('todo', JSON.stringify(todo));
+        });
+
+        return () => {
+            willBlurListener.remove();
+        };
+    });
 
     const onAdd = (value: string) => {
         useAddTodo({ title: value, isDone: false });
