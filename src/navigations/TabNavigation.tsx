@@ -3,9 +3,8 @@ import { createAppContainer } from 'react-navigation';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { MainScreen, SubScreen } from '@screen';
 import { StatusBar } from 'react-native';
-
-interface Props {}
-interface State {}
+import { useTodo } from '@hook/useTodo';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const MainNav = createAppContainer(
     createMaterialTopTabNavigator(
@@ -25,17 +24,21 @@ const MainNav = createAppContainer(
     ),
 );
 
-export default class TabNavigation extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-    }
+const TabNavigation = () => {
+    const { useSetTodo } = useTodo();
 
-    render() {
-        return (
-            <>
-                <StatusBar />
-                <MainNav />
-            </>
-        );
-    }
-}
+    React.useEffect(() => {
+        AsyncStorage.getItem('todo').then(res => {
+            res.length > 0 && useSetTodo(JSON.parse(res));
+        });
+    }, []);
+    
+    return (
+        <>
+            <StatusBar />
+            <MainNav />
+        </>
+    );
+};
+
+export default TabNavigation;
