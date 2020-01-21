@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import S from './styles';
-import { useTodoState } from '@hook/useTodo';
+import { useReducerState } from '@hook/useReducerState';
 
 const SubScreen = () => {
-    const todoList = useTodoState().todo;
+    const { useTodoState } = useReducerState();
+    const { todo } = useTodoState;
 
     return (
         <View style={S.ContainerView}>
             <FlatList
-                data={todoList}
+                data={todo}
                 keyExtractor={(item, index) => index.toString()}
                 ListFooterComponent={() => <View style={S.DivierView} />}
                 ItemSeparatorComponent={() => <View style={S.DivierView} />}

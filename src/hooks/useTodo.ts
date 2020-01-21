@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@reducers';
+import { useDispatch } from 'react-redux';
 import { addTodo, statusTodo, removeTodo } from '@reducer/TodoReducer';
 import { useCallback } from 'react';
 
@@ -12,8 +11,4 @@ export const useTodo = () => {
     return { useAddTodo, useStatusTodo, useRemoveTodo };
 };
 
-export const useTodoState = () => {
-    return useSelector((state: RootState) => state.TodoReducer);
-};
-
-export default { useTodo, useTodoState };
+export default { useTodo };
