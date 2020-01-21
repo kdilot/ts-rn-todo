@@ -61,3 +61,6 @@ buck-out/
 .vscode
 __test*
 sample.md
+
+
+Podfile.lock
