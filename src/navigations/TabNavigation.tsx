@@ -29,7 +29,7 @@ const TabNavigation = () => {
 
     React.useEffect(() => {
         AsyncStorage.getItem('todo').then(res => {
-            res.length > 0 && useSetTodo(JSON.parse(res));
+            res && useSetTodo(JSON.parse(res));
         });
     }, []);
     
