@@ -5,8 +5,7 @@ import { useReducerState } from '@hook/useReducerState';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContext } from 'react-navigation';
 import AsyncStorage from '@react-native-community/async-storage';
-import config from '@asset/fonts/selection.json';
-import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import S from './styles';
 
 const MainScreen = () => {
@@ -27,8 +26,17 @@ const MainScreen = () => {
     });
 
     const onAdd = (value: string) => {
-        useAddTodo({ title: value, isDone: false });
-        setInputValue(null);
+        if (value) {
+            const today = new Date();
+            const month = today.getMonth() + 1;
+            const day = today.getDate();
+            const year = today
+                .getFullYear()
+                .toString()
+                .slice(2.2);
+            useAddTodo({ title: value, isDone: false, date: `${month}/${day}/${year}` });
+            setInputValue(null);
+        }
     };
 
     const onStatus = (item: object) => {
@@ -40,18 +48,15 @@ const MainScreen = () => {
         useRemoveTodo(index);
     };
 
-    const Icon = createIconSetFromIcoMoon(config);
-
     return (
         <SafeAreaView style={S.ContainerView}>
             <View style={S.HeaderView}>
                 <Text style={S.HeaderText}>TODO</Text>
-                <Icon name="sample2" size={40} color={'red'} />
             </View>
             <View style={S.InputView}>
                 <TextInput style={S.InputBox} value={inputValue} onChangeText={inputValue => setInputValue(inputValue)} />
-                <TouchableOpacity activeOpacity={0.7} onPress={() => onAdd(inputValue)}>
-                    <Text style={S.InputText}>ADD</Text>
+                <TouchableOpacity style={S.InputText} activeOpacity={0.7} onPress={() => onAdd(inputValue)}>
+                    <Ionicons name="ios-add" size={30} />
                 </TouchableOpacity>
             </View>
             <View style={S.ContentView}>
@@ -61,10 +66,11 @@ const MainScreen = () => {
                     renderItem={({ item, index }: any) => (
                         <View style={S.ListView}>
                             <TouchableOpacity style={S.ListTextView} onPress={() => onStatus(item)}>
+                                <Ionicons name="ios-checkbox-outline" size={30} color={item.isDone ? 'green' : 'gray'} />
                                 <Text style={[S.ListText, item.isDone && S.ListDoneText]}>{item.title}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={S.RemoveView} onPress={() => onRemove(index)}>
-                                <Text style={[S.RemoveText]}>remove</Text>
+                                <Ionicons name="md-trash" size={30} />
                             </TouchableOpacity>
                         </View>
                     )}

@@ -7,14 +7,14 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     HeaderView: {
-        flex: 1,
+        height: 70,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 3,
     },
     InputView: {
-        flex: 1,
+        height: 70,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -29,7 +29,8 @@ export default StyleSheet.create({
     },
     InputText: {
         fontSize: 20,
-        padding: 5,
+        padding: 3,
+        paddingHorizontal: 10,
         textAlign: 'center',
         borderWidth: 1,
         borderRadius: 5,
@@ -50,23 +51,20 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     ListTextView: {
+        flexDirection: 'row',
         flex: 4,
         paddingLeft: 10,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     },
     ListText: {
+        paddingLeft: 10,
         fontSize: 17,
     },
     RemoveView: {
         flex: 1,
-    },
-    RemoveText: {
-        marginLeft: 5,
-        padding: 5,
-        borderRadius: 5,
-        borderWidth: 1,
-        textAlign: 'center',
+        alignItems: 'flex-end',
+        paddingRight: 10,
     },
     ListDoneText: {
         textDecorationLine: 'line-through',

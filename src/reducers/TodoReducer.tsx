@@ -26,7 +26,7 @@ const actions = {
 type TodoAction = ActionType<typeof actions>;
 
 interface TodoState {
-    todo: Array<{ title: string; isDone: boolean }>;
+    todo: Array<{ title: string; isDone: boolean; date: string }>;
 }
 
 // Default State
@@ -35,6 +35,7 @@ const initialState: TodoState = {
         {
             title: 'Sample Todo1',
             isDone: false,
+            date: '1/1/20',
         },
     ],
 };

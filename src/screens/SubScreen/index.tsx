@@ -14,7 +14,12 @@ const SubScreen = () => {
                 keyExtractor={(item, index) => index.toString()}
                 ListFooterComponent={() => <View style={S.DivierView} />}
                 ItemSeparatorComponent={() => <View style={S.DivierView} />}
-                renderItem={({ item }) => <Text style={S.ListText}>{item.title}</Text>}
+                renderItem={({ item }) => (
+                    <View style={S.ListView}>
+                        <Text style={[S.ListText, item.isDone && S.ListDoneText]}>{item.title}</Text>
+                        <Text style={[S.ListText, S.ListDateText]}>{item.date}</Text>
+                    </View>
+                )}
             />
         </SafeAreaView>
     );
