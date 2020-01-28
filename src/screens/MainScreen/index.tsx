@@ -65,12 +65,8 @@ const MainScreen = () => {
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item, index }: any) => (
                         <View style={S.ListView}>
-<<<<<<< HEAD
-                            <TouchableOpacity style={S.ListTextView} onPress={() => onStatus(item)}>
-                                <Ionicons name="ios-checkbox-outline" size={30} color={item.isDone ? 'green' : 'gray'} />
-=======
                             <TouchableOpacity style={S.ListTextView} onPress={() => onStatus(item, index)}>
->>>>>>> f80d98ec37888691a23d9b3a4abc6cd3f016fea7
+                                <Ionicons name="ios-checkbox-outline" size={30} color={item.isDone ? 'green' : 'gray'} />
                                 <Text style={[S.ListText, item.isDone && S.ListDoneText]}>{item.title}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={S.RemoveView} onPress={() => onRemove(index)}>
