@@ -66,11 +66,7 @@ const MainScreen = () => {
                     renderItem={({ item, index }: any) => (
                         <View style={S.ListView}>
                             <TouchableOpacity style={S.ListTextView} onPress={() => onStatus(item, index)}>
-<<<<<<< HEAD
->>>>>>> 94ec1c8805b2a5dec3b3993e33927ae2fda4905e
-=======
                                 <Ionicons name="ios-checkbox-outline" size={30} color={item.isDone ? 'green' : 'gray'} />
->>>>>>> b437597... todo
                                 <Text style={[S.ListText, item.isDone && S.ListDoneText]}>{item.title}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={S.RemoveView} onPress={() => onRemove(index)}>
