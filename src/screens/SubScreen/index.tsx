@@ -2,9 +2,11 @@ import * as React from 'react';
 import { View, Text, FlatList, SafeAreaView } from 'react-native';
 import S from './styles';
 import { useReducerState } from '@hook/useReducerState';
+import UserContext from '@context/userContext';
 
 const SubScreen = () => {
     const { useTodoState } = useReducerState();
+    const user = React.useContext(UserContext);
     const { todo } = useTodoState;
 
     return (
