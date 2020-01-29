@@ -32,7 +32,7 @@ const TabNavigation = () => {
             res && useSetTodo(JSON.parse(res));
         });
     }, []);
-    
+
     return (
         <>
             <StatusBar />
